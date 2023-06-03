@@ -1,4 +1,5 @@
 #! /bin/bash
+cd ..
 python -Xutf8 manage.py dumpdata --indent 2 --exclude contenttypes -o indented_db.json
 echo "fixture was added"
 pip freeze > requirements.txt
