@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'yama_pack.apps.YamaPackageConfig',
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
