@@ -48,3 +48,14 @@ class Pack(models.Model):
 
     def __str__(self):
         return self.orderkey
+
+
+class RepackingCargotype(models.Model):
+    cargotype = models.PositiveSmallIntegerField()
+
+    class Meta:
+        verbose_name = 'Карготип с доупаковкой'
+        verbose_name_plural = 'Карготипы с доупаковкой'
+
+    def __str__(self):
+        return self.cargotype
