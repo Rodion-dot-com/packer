@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from yama_pack.models import Pack, Status, RepackingCargotype
+from yama_pack.models import Pack, RepackingCargotype, Status
 
 admin.site.register(Status)
 admin.site.register(Pack)
