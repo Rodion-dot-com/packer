@@ -1,4 +1,5 @@
 import collections
+import os
 
 from django.utils import timezone
 from requests import codes, get
@@ -9,8 +10,9 @@ from rest_framework.response import Response
 from api.serializers import PackSerializer
 from yama_pack.models import Pack, RepackingCargotype
 
-YAMA_API_ORDER_DETAILED = 'http://127.0.0.1:8001/yama-api/v1/order/'
-DS_API_PACK = 'http://127.0.0.1:8003/pack'
+SERVER_NAME = os.getenv('SERVER_NAME', default='http://127.0.0.1')
+YAMA_API_ORDER_DETAILED = f'{SERVER_NAME}/yama-api/v1/order/'
+DS_API_PACK = f'{SERVER_NAME}/pack'
 
 
 def is_required_repacking(cargotypes: list) -> bool:
@@ -52,7 +54,7 @@ def new_pack(request):
             'size2': sku.get('b'),
             'size3': sku.get('c'),
             'weight': sku.get('goods_wght'),
-            'type': sku.get('cargotype'),
+            'type': list(map(str, sku.get('cargotype'))),
         })
 
     recommendation_response = get(DS_API_PACK, json={
