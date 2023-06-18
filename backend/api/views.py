@@ -3,16 +3,21 @@ import os
 
 from django.utils import timezone
 from requests import codes, get
-from rest_framework import status, viewsets
+from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from api.serializers import PackSerializer
 from yama_pack.models import Pack, RepackingCargotype
 
-SERVER_NAME = os.getenv('SERVER_NAME', default='http://127.0.0.1')
-YAMA_API_ORDER_DETAILED = f'{SERVER_NAME}/yama-api/v1/order/'
-DS_API_PACK = f'{SERVER_NAME}/pack'
+YAMA_API_ORDER_DETAILED = os.getenv(
+    'YAMA_API_ORDER_DETAILED',
+    default='http://127.0.0.1:8001/yama-api/v1/order/'
+)
+DS_API_PACK = os.getenv(
+    'DS_API_PACK',
+    default='http://127.0.0.1:8002/pack'
+)
 
 
 def is_required_repacking(cargotypes: list) -> bool:
@@ -121,8 +126,3 @@ def select_carton(request):
 
     request.session.clear()
     return Response({'status': 'ok'}, status=status.HTTP_200_OK)
-
-
-class PackViewSet(viewsets.ModelViewSet):
-    queryset = Pack.objects.all()
-    serializer_class = PackSerializer
