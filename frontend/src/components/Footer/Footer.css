@@ -1,0 +1,29 @@
+.footer {
+    display: flex;
+    background-color: #000000;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 24px;
+    width: 100vw;
+    box-sizing: border-box;
+    align-self: flex-end;
+}
+
+.footer-text-container {
+    display: flex;
+    justify-content: space-between;
+    width: 53%;
+}
+
+.footer__text {
+    margin: 0;
+    color: #7E7E7E;
+    font-size: 11px;
+}
+
+@media screen and (min-width: 1500px) {
+    .footer__text {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}

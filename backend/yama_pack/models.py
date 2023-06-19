@@ -58,4 +58,4 @@ class RepackingCargotype(models.Model):
         verbose_name_plural = 'Карготипы с доупаковкой'
 
     def __str__(self):
-        return self.cargotype
+        return f'{self.cargotype}'
