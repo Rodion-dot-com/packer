@@ -12,11 +12,11 @@ from yama_pack.models import Pack, RepackingCargotype
 
 YAMA_API_ORDER_DETAILED = os.getenv(
     'YAMA_API_ORDER_DETAILED',
-    default='http://127.0.0.1:8001/yama-api/v1/order/'
+    default='http://127.0.0.1/yama-api/v1/order/'
 )
 DS_API_PACK = os.getenv(
     'DS_API_PACK',
-    default='http://127.0.0.1:8002/pack'
+    default='http://127.0.0.1/pack'
 )
 
 
