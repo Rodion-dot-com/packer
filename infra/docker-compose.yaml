@@ -12,7 +12,7 @@ services:
     image: proforg77/pack_ml:pack_ml
     restart: always
   backend:
-    image: rodion04/packer:v1
+    image: rodion04/packer:latest
     restart: always
     volumes:
       - static_value:/app/static/
