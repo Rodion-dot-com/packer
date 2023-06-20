@@ -12,9 +12,9 @@ services:
     image: proforg77/pack_ml:pack_ml
     restart: always
   frontend:
-    image: proforg77/product_packing_react:latest
+    image: rodion04/product_packing_react:latest
     volumes:
-      - ../frontend/:/app/result_build/
+      - ./frontend/:/app/result_build/
   backend:
     image: rodion04/packer:latest
     restart: always
@@ -32,10 +32,11 @@ services:
       - "80:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ../frontend/build:/usr/share/nginx/html/
+      - ./frontend/build:/usr/share/nginx/html/
       - static_value:/var/html/static/
       - media_value:/var/html/media/
     depends_on:
+      - frontend
       - backend
 
 volumes:
